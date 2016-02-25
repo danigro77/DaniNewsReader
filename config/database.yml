@@ -1,0 +1,24 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  user: root
+  host: localhost
+
+development:
+  <<: *default
+  database: db/development_news_reader
+
+test:
+  <<: *default
+  database: db/test_news_reader
+
+production:
+  <<: *default
+  database: db/production_news_reader
