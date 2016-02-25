@@ -2,9 +2,19 @@
 %html
   %head
     %title
-      Dani News Reader
+      Dani's News Reader
+    %link{:href => "https://fonts.googleapis.com/css?family=Droid+Serif:400,700", :rel => "stylesheet", :type => "text/css"}
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    = yield
+    .wrapper
+      = yield
+      .clearfix
+    .footer
+      .name
+        Daniela Grossmann
+      .email
+        daniela.grossmann@gmail.com
+      .date
+        San Francisco, Feb. 2016

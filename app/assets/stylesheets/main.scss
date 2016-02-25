@@ -1,0 +1,86 @@
+body {
+  margin: 0;
+  font-family: 'Droid Serif', serif;
+}
+.wrapper {
+  width: 1000px;
+  margin: 0 auto;
+  background: whitesmoke;
+  padding: 15px;
+  padding-bottom: 0;
+}
+h1, h3 {
+  text-align: center;
+}
+h5 {
+  margin: 0;
+  padding: 5px;
+  background: whitesmoke;
+}
+a {
+  color: #2E2F30;
+  text-decoration: none;
+  &:visited {
+    color: #999999;
+  }
+}
+.new_links, .saved_links {
+  width: 480px;
+  margin-bottom: 20px;
+  .scroll {
+    background: white;
+    height: 500px;
+    overflow: scroll;
+    border: lightgray 1px solid;
+    padding: 15px;
+  }
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+  tr:hover {
+    background: ghostwhite;
+  }
+  td {
+    padding: 2px 5px;
+  }
+  .article {
+    width: 400px;
+  }
+  .action {
+    width: 45px;
+    font-size: 0.86em;
+    text-align: right;
+    a {
+      color: #999999;
+      &:hover {
+        color: #2E2F30;
+      }
+    }
+  }
+}
+.new_links {
+  float: left;
+}
+.saved_links {
+  margin-left: 30px;
+  float: right;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.footer {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 15px;
+  background: grey;
+  color: ghostwhite;
+  height: 60px;
+  border-radius: 4px 4px 0 0;
+  div {
+    float: left;
+    margin: 25px 70px;
+  }
+}
