@@ -17,6 +17,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # HAML
 gem "haml"
 
+gem 'rails_12factor'
+
 # Scraping
 gem 'mechanize', '~> 2.7', '>= 2.7.4'
 
