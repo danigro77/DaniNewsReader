@@ -33,7 +33,7 @@ class ReaderController < ApplicationController
 
   def group_articles
     grouped = {}
-    Article.all.group_by(&:created_at).each do |article|
+    Article.all.order('created_at desc').group_by(&:created_at).each do |article|
       grouped[article[0].beginning_of_day] ||= []
       grouped[article[0].beginning_of_day] += article[1]
     end

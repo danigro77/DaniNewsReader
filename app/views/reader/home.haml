@@ -1,7 +1,7 @@
 %h1 DerStandard.At Reader
 
 .new_links
-  %h3 New Articles
+  %h3 Front page Articles
   .scroll
     %table
       - @links.each do |link|
@@ -13,8 +13,8 @@
 
 .saved_links
   %h3 Saved Articles
-  -@saved_articles.each do |created_at, articles|
-    .scroll
+  .scroll
+    -@saved_articles.each do |created_at, articles|
       %h5= created_at.strftime("%d %^b %Y")
       %table
         -articles.each do |article|
@@ -22,4 +22,4 @@
             %td.article
               %a{href:"http://derstandard.at#{article[:url]}", target: '_blank'}= article[:title]
             %td.action
-              =link_to 'Delete', delete_article_path(article.id), method: :delete
+              =link_to 'Remove', delete_article_path(article.id), method: :delete

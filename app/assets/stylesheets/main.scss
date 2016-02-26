@@ -16,6 +16,7 @@ h5 {
   margin: 0;
   padding: 5px;
   background: whitesmoke;
+  text-align: center;
 }
 a {
   color: #2E2F30;
@@ -28,6 +29,7 @@ a {
   width: 480px;
   margin-bottom: 20px;
   .scroll {
+    border-radius: 5px;
     background: white;
     height: 500px;
     overflow: scroll;
@@ -42,7 +44,7 @@ a {
     background: ghostwhite;
   }
   td {
-    padding: 2px 5px;
+    padding: 10px 5px;
   }
   .article {
     width: 400px;
@@ -80,6 +82,10 @@ a {
   height: 60px;
   border-radius: 4px 4px 0 0;
   div {
+    a {
+      color: ghostwhite;
+      text-decoration: none;
+    }
     float: left;
     margin: 25px 70px;
   }
