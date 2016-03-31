@@ -1,0 +1,35 @@
+.user_forms {
+  padding-bottom: 30px;
+  margin: 0 auto;
+  width: 400px;
+  form {
+    .field {
+      padding: 5px 0;
+      clear: both;
+      label {
+        width: 150px;
+        float: left;
+      }
+      input[type='email'], input[type='password'] {
+        width: 241px;
+        float: left;
+      }
+      .help {
+        text-align: right;
+        font-size: 0.85em;
+        color: #730E15;
+      }
+    }
+    .actions {
+      text-align: right;
+      input[type='submit'] {
+        font-size: 1em;
+        padding: 2px;
+        margin: 5px 0;
+      }
+    }
+  }
+  a {
+    font-size: .85em;
+  }
+}

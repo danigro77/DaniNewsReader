@@ -9,7 +9,17 @@
     = csrf_meta_tags
   %body
     .wrapper
-      = yield
+      .notifications
+        %p.notice= notice
+        %p.alert= alert
+        -if current_user
+          .user= current_user.email
+          %ul
+            %li= link_to 'Log out', destroy_user_session_path, method: "delete"
+          = yield
+        -else
+          .user_forms
+            = yield
       .clearfix
     .footer
       .name

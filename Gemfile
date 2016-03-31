@@ -19,6 +19,9 @@ gem "haml"
 
 gem 'rails_12factor'
 
+# User management and authorisations
+gem 'devise'
+
 # Scraping
 gem 'mechanize', '~> 2.7', '>= 2.7.4'
 
