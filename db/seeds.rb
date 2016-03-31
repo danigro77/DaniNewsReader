@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+newspapers = [
+    {
+        name: 'Der Standard',
+        scraping_type: 'rails',
+        url: 'http://derstandard.at',
+        language: 'de'
+    }
+]
+
+newspapers.each do |paper|
+  Newspaper.create(paper)
+end
