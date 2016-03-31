@@ -1,5 +1,6 @@
 class ReaderController < ApplicationController
   def home
+    @newspapers = Newspaper.all
     @saved_articles = group_articles
     @links = get_articles
   end
