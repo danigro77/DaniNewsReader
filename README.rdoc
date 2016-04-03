@@ -9,7 +9,10 @@
     cd DaniNewsReader
     bundle install
     rake db:setup
+    npm install
+    bower install
 
 3. Run the server and visit localhost:3000
 
     rails s
+    grunt serve

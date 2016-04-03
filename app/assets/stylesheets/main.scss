@@ -25,8 +25,31 @@ a {
     color: #999999;
   }
 }
+
+header {
+  .notifications {
+    float: left;
+    width: 70%;
+  }
+  .user {
+    float: left;
+    width: 30%;
+    text-align: right;
+  }
+  ul.dropdown-menu {
+    right: 0;
+    left: auto;
+    li {
+      text-align: right;
+    }
+  }
+}
+.content, .user_forms {
+  clear: both;
+}
+
 .new_links, .saved_links {
-  width: 480px;
+  width: 470px;
   margin-bottom: 20px;
   .scroll {
     border-radius: 5px;
@@ -87,6 +110,6 @@ a {
       text-decoration: none;
     }
     float: left;
-    margin: 25px 70px;
+    margin: 25px 77px;
   }
 }
