@@ -9,12 +9,14 @@ Rails.application.routes.draw do
   devise_scope :user do
     scope '/api', defaults: {format: :json} do
       scope '/articles' do
-        get '/all' => 'api/articles#articles'
-        get '/headlines' => 'api/articles#frontpage_headlines'
+        get '/all/:newspaper_id' => 'api/articles#articles'
+        get '/headlines/:newspaper_id' => 'api/articles#frontpage_headlines'
         post '/save_article' => 'api/articles#save_article'
         delete '/delete/:id' => 'api/articles#delete'
       end
-
+      scope 'newspapers' do
+        get '/all' => 'api/newspapers#newspapers'
+      end
     end
   end
 
