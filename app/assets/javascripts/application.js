@@ -12,5 +12,22 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+
+//= require angular
+//= require bower_components/angular-bootstrap/ui-bootstrap
+//= require angular-route
+//= require angular-rails-templates
+//= require angular-resource
+//= require angular-animate
+//= require angular-cookies
+//= require angular-sanitize
+//= require angular-touch
+//= require bootstrap
+//= require bootstrap-sprockets
+
+//= require ./angular-client/app
+
+//= require_tree ./angular-client/app/scripts/modules
+//= require_tree ./angular-client/app/scripts/controllers
+//= require_tree ./angular-client/app/scripts/directives
+//= require_tree ./angular-client/app/scripts/services

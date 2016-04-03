@@ -1,25 +1,26 @@
-%h1 DerStandard.At Reader
-
-.new_links
-  %h3 Front page Articles
-  .scroll
-    %table
-      - @links.each do |link|
-        %tr.link
-          %td.article
-            %a{href:"http://derstandard.at#{link[:article][:url]}", target: '_blank'}= link[:article][:title]
-          %td.action
-            =link_to 'Save', save_article_path(link), method: :post
-
-.saved_links
-  %h3 Saved Articles
-  .scroll
-    -@saved_articles.each do |created_at, articles|
-      %h5= created_at.strftime("%d %^b %Y")
-      %table
-        -articles.each do |article|
-          %tr.link
-            %td.article
-              %a{href:"http://derstandard.at#{article[:url]}", target: '_blank'}= article[:title]
-            %td.action
-              =link_to 'Remove', delete_article_path(article.id), method: :delete
+.reader{'reader'=>''}
+-#%h1 DerStandard.At Reader
+-#
+-#.new_links
+-#  %h3 Front page Articles
+-#  .scroll
+-#    %table
+-#      - @links.each do |link|
+-#        %tr.link
+-#          %td.article
+-#            %a{href:"http://derstandard.at#{link[:article][:url]}", target: '_blank'}= link[:article][:title]
+-#          %td.action
+-#            =link_to 'Save', save_article_path(link), method: :post
+-#
+-#.saved_links
+-#  %h3 Saved Articles
+-#  .scroll
+-#    -@saved_articles.each do |created_at, articles|
+-#      %h5= created_at.strftime("%d %^b %Y")
+-#      %table
+-#        -articles.each do |article|
+-#          %tr.link
+-#            %td.article
+-#              %a{href:"http://derstandard.at#{article[:url]}", target: '_blank'}= article[:title]
+-#            %td.action
+-#              =link_to 'Remove', delete_article_path(article.id), method: :delete

@@ -15,3 +15,8 @@
 /log/*.log
 /tmp
 .idea/
+/vendor/assets/javascripts/bower_components
+/node_modules
+/app/assets/javascripts/angular-client/api/node_modules
+.sass-cache
+.tmp
