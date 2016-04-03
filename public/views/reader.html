@@ -1,37 +1,59 @@
-<h1>DerStandard.At Reader</h1>
-
-<div class="new_links">
-    <h3>Front page Articles</h3>
-    <div class="scroll">
-        <table>
-            <tr class="link" ng-repeat="article in newHeadlines">
-                <td class="article">
-                    <a href="http://derstandard.at{{article.url}}" target="_blank">{{article.title}}</a>
-                </td>
-                <td class="action">
-                    <button ng-click="saveArticle(article)">Save</button>
-                </td>
-            </tr>
-        </table>
+<!--<select class="selectpicker multiple" data-live-search="true">-->
+    <!--<option>Hot Dog</option>-->
+    <!--<option>Burger</option>-->
+    <!--<option>Sugar</option>-->
+<!--</select>-->
+<h1>
+    <div class="btn-group">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="newspapers" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{selectedNewspaper.name}}
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="newspapers">
+            <li ng-repeat="newspaper in allNewspapers"><a href="#" ng-click="selectNewspaper(newspaper)">{{newspaper.name}}</a></li>
+        </ul>
     </div>
-</div>
-<div class="saved_links">
-    <h3>Saved Articles</h3>
-    <div class="scroll">
-        <div ng-repeat="(date, articles) in savedHeadlines">
-            <h5>{{date}}</h5>
+     Reader
+</h1>
+
+<div ng-if="selectedNewspaper.id != 0">
+    <div class="new_links">
+        <h3>Front page Articles</h3>
+        <div class="scroll">
             <table>
-                <tr class="link" ng-repeat="article in articles">
+                <tr class="link" ng-repeat="article in newHeadlines">
                     <td class="article">
                         <a href="http://derstandard.at{{article.url}}" target="_blank">{{article.title}}</a>
                     </td>
                     <td class="action">
-                        <button ng-click="deleteArticle(article.id)">Remove</button>
+                        <button ng-click="saveArticle(article)">Save</button>
                     </td>
                 </tr>
             </table>
         </div>
     </div>
+    <div class="saved_links">
+        <h3>Saved Articles</h3>
+        <div class="scroll">
+            <div ng-repeat="(date, articles) in savedHeadlines">
+                <h5>{{date}}</h5>
+                <table>
+                    <tr class="link" ng-repeat="article in articles">
+                        <td class="article">
+                            <a href="http://derstandard.at{{article.url}}" target="_blank">{{article.title}}</a>
+                        </td>
+                        <td class="action">
+                            <button ng-click="deleteArticle(article.id)">Remove</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
-
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.dropdown-toggle').dropdown();
+    });
+</script>

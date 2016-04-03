@@ -2,11 +2,11 @@
 
 angular.module('app.newsReader').service "ArticleService", [ '$http', (http) ->
 
-  @getArticles = ->
-    http.get '/api/articles/all'
+  @getArticles = (newspaperId) ->
+    http.get '/api/articles/all/' + newspaperId
 
-  @getHeadlines = ->
-    http.get '/api/articles/headlines'
+  @getHeadlines = (newspaperId) ->
+    http.get '/api/articles/headlines/' + newspaperId
 
   @saveArticle = (data) ->
     http({
