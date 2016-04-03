@@ -6,8 +6,17 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'reader#home'
 
-  post '/save_article' => 'articles#save_article', as: 'save_article'
-  delete '/delete/:id' => 'articles#delete', as: 'delete_article'
+  devise_scope :user do
+    scope '/api', defaults: {format: :json} do
+      scope '/articles' do
+        get '/all' => 'api/articles#articles'
+        get '/headlines' => 'api/articles#frontpage_headlines'
+        post '/save_article' => 'api/articles#save_article'
+        delete '/delete/:id' => 'api/articles#delete'
+      end
+
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
