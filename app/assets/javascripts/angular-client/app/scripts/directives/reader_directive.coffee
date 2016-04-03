@@ -3,5 +3,5 @@ angular.module('app.newsReader').directive 'reader', ->
 #  scope: {
 #    currentUser: '@'
 #  }
-#  controller: 'readerController'
+  controller: 'ReaderController'
   templateUrl: 'views/reader.html'

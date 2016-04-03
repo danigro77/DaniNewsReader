@@ -1,1 +1,37 @@
-HERE!!!!
+<h1>DerStandard.At Reader</h1>
+
+<div class="new_links">
+    <h3>Front page Articles</h3>
+    <div class="scroll">
+        <table>
+            <tr class="link" ng-repeat="article in newHeadlines">
+                <td class="article">
+                    <a href="http://derstandard.at{{article.url}}" target="_blank">{{article.title}}</a>
+                </td>
+                <td class="action">
+                    <button ng-click="saveArticle(article)">Save</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="saved_links">
+    <h3>Saved Articles</h3>
+    <div class="scroll">
+        <div ng-repeat="(date, articles) in savedHeadlines">
+            <h5>{{date}}</h5>
+            <table>
+                <tr class="link" ng-repeat="article in articles">
+                    <td class="article">
+                        <a href="http://derstandard.at{{article.url}}" target="_blank">{{article.title}}</a>
+                    </td>
+                    <td class="action">
+                        <button ng-click="deleteArticle(article.id)">Remove</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+

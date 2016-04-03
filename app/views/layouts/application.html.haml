@@ -16,8 +16,7 @@
           .user= current_user.email
           %ul
             %li= link_to 'Log out', destroy_user_session_path, method: "delete"
-          -#= yield
-          .reader{'reader'=>''}
+          = yield
         -else
           .user_forms
             = yield
