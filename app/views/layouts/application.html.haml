@@ -1,5 +1,5 @@
 !!!
-%html
+%html{"ng-app"=>"app"}
   %head
     %title
       Dani's News Reader
@@ -7,7 +7,7 @@
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-  %body
+  %body{"ng-controller" => "NewsReaderController"}
     .wrapper
       .notifications
         %p.notice= notice
@@ -16,7 +16,8 @@
           .user= current_user.email
           %ul
             %li= link_to 'Log out', destroy_user_session_path, method: "delete"
-          = yield
+          -#= yield
+          .reader{'reader'=>''}
         -else
           .user_forms
             = yield
