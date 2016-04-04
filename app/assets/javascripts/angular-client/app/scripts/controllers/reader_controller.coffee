@@ -1,10 +1,20 @@
 angular.module('app.newsReader').controller("ReaderController", ['$scope', 'NewspaperService', 'ArticleService', (scope, NewspaperService, ArticleService)->
 
   scope.allHeadlines = []
-  scope.selectedNewspaper = {id: 0, name: 'Select a newspaper'}
   scope.allNewspapers = []
 
+  getCurrentNewspaper = ->
+    NewspaperService.getCurrentNewspaper().then (response) ->
+      if response.status == 200 || response.status == 204
+        if response.data == null
+          scope.selectedNewspaper = {id: 0, name: 'Select a newspaper'}
+        else
+          scope.selectedNewspaper = response.data
+      else
+        scope.selectedNewspaper = {id: 0, name: 'No newspapers found.'}
+
   getNewspapers = ->
+    getCurrentNewspaper()
     NewspaperService.getNewspapers().then (response) ->
       if response.status == 200 || response.status == 204
         scope.allNewspapers = response.data
@@ -33,6 +43,11 @@ angular.module('app.newsReader').controller("ReaderController", ['$scope', 'News
         result.push article
     result
 
+  saveCurrentNewspaper = ->
+    NewspaperService.updateCurrentNewspaper(scope.selectedNewspaper.id).then (response) ->
+      if response.status == 200 || response.status == 204
+        getHeadlines()
+
   scope.saveArticle = (data) ->
     ArticleService.saveArticle(data).then (response) ->
       if response.status == 201
@@ -55,7 +70,7 @@ angular.module('app.newsReader').controller("ReaderController", ['$scope', 'News
   getNewspapers()
 
   scope.$watch 'selectedNewspaper', (newVal, oldVal) ->
-    if newVal != undefined && newVal != oldVal && newVal.id != 0
-      getHeadlines()
+    if newVal != undefined && newVal != null && newVal != oldVal && newVal.id != 0
+      saveCurrentNewspaper()
 
 ])
