@@ -18,6 +18,7 @@ class Api::ArticlesController < ApplicationController
 
   def save_article
     article = Article.new(article_params)
+    article.users << current_user
     if article.save
       respond_with saved_articles(article.newspaper_id), location: '/'
     else
@@ -40,7 +41,7 @@ class Api::ArticlesController < ApplicationController
   end
 
   def saved_articles(newspaper_id)
-    articles = Article.where(newspaper_id: newspaper_id)
+    articles = current_user.articles.where(newspaper_id: newspaper_id)
     {
         existing_urls: articles.pluck(:url),
         saved: group(articles)
