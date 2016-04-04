@@ -7,13 +7,7 @@ class Api::ArticlesController < ApplicationController
 
   def frontpage_headlines
     newspaper = Newspaper.find(params[:newspaper_id])
-    mechanize = Mechanize.new
-
-    page = mechanize.get(newspaper.url)
-    links = page.links_with(href:/^\/\d+\/.+/)
-                .reject { |link| link.text.match(/(reuters\/|apa\/|apa \/|foto:|cartoon:)/) }
-                .select { |link| link.text.present? && link.href.present? }
-    respond_with clean(links, newspaper.id), location: '/'
+    respond_with newspaper.scrape_page, location: '/'
   end
 
   def save_article
@@ -46,19 +40,6 @@ class Api::ArticlesController < ApplicationController
         existing_urls: articles.pluck(:url),
         saved: group(articles)
     }
-  end
-
-  def clean(links, newspaper_id)
-    temp = {}
-    result = []
-    links.each do |link|
-      temp[link.href] ||= []
-      temp[link.href] = link.text if temp[link.href].empty? || temp[link.href].length < link.text.length
-    end
-    temp.each_pair do |url, title|
-      result << {title: title, url: url, newspaper_id:newspaper_id}
-    end
-    result
   end
 
   def group(articles)

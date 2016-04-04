@@ -9,12 +9,34 @@
 newspapers = [
     {
         name: 'Der Standard',
-        scraping_type: 'rails',
+        link_type: 'partial',
+        link_characteristic: 'num_front',
         url: 'http://derstandard.at',
         language: 'de'
+    },
+    {
+        name: 'CNN',
+        link_type: 'partial',
+        link_characteristic: 'num_front',
+        url: 'http://www.cnn.com',
+        language: 'en'
+    },
+    {
+        name: 'BBC',
+        link_type: 'partial',
+        link_characteristic: 'num_end',
+        url: 'http://www.bbc.com',
+        language: 'en'
+    },
+    {
+        name: 'Hacker News',
+        link_type: 'full',
+        link_characteristic: '',
+        url: 'https://news.ycombinator.com',
+        language: 'en'
     }
 ]
 
 newspapers.each do |paper|
-  Newspaper.create(paper)
+  Newspaper.find_or_create_by(paper)
 end

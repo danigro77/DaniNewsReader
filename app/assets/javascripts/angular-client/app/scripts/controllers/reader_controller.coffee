@@ -46,6 +46,12 @@ angular.module('app.newsReader').controller("ReaderController", ['$scope', 'News
   scope.selectNewspaper = (data) ->
     scope.selectedNewspaper = data
 
+  scope.getUrl = (url) ->
+    if scope.selectedNewspaper.link_type == "full"
+      url
+    else
+      scope.selectedNewspaper.url + url
+
   getNewspapers()
 
   scope.$watch 'selectedNewspaper', (newVal, oldVal) ->
