@@ -1,8 +1,3 @@
-<!--<select class="selectpicker multiple" data-live-search="true">-->
-    <!--<option>Hot Dog</option>-->
-    <!--<option>Burger</option>-->
-    <!--<option>Sugar</option>-->
-<!--</select>-->
 <h1>
     <div class="btn-group">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="newspapers" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -16,7 +11,7 @@
      Reader
 </h1>
 
-<div ng-if="selectedNewspaper.id != 0">
+<div ng-if="selectedNewspaper.id != 0 && newHeadlines.length > 0">
     <div class="new_links">
         <h3>Front page Articles</h3>
         <div class="scroll">
