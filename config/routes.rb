@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       end
       scope 'newspapers' do
         get '/all' => 'api/newspapers#newspapers'
+        get '/current' => 'api/newspapers#current_newspaper'
+        put '/save_current/:newspaper_id' => 'api/newspapers#save_current_newspaper'
       end
     end
   end

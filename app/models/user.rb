@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_and_belongs_to_many :articles
+  belongs_to :current_newspaper, class_name: Newspaper
+
 end

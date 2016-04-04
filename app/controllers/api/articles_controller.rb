@@ -44,9 +44,10 @@ class Api::ArticlesController < ApplicationController
 
   def group(articles)
     grouped = {}
-    articles.order('created_at desc').group_by(&:created_at).each do |article|
-      grouped[article[0].beginning_of_day.strftime("%d %^b %Y")] ||= []
-      grouped[article[0].beginning_of_day.strftime("%d %^b %Y")] += article[1]
+    articles.order('created_at desc').each do |article|
+      date = article.created_at.localtime.beginning_of_day.strftime("%d %^b %Y")
+      grouped[date] ||= []
+      grouped[date] << article
     end
     grouped
   end
