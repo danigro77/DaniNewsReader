@@ -18,7 +18,7 @@
             <table>
                 <tr class="link" ng-repeat="article in newHeadlines">
                     <td class="article">
-                        <a href="http://derstandard.at{{article.url}}" target="_blank">{{article.title}}</a>
+                        <a href="{{getUrl(article.url)}}" target="_blank">{{article.title}}</a>
                     </td>
                     <td class="action">
                         <button ng-click="saveArticle(article)">Save</button>
@@ -35,7 +35,7 @@
                 <table>
                     <tr class="link" ng-repeat="article in articles">
                         <td class="article">
-                            <a href="http://derstandard.at{{article.url}}" target="_blank">{{article.title}}</a>
+                            <a href="{{getUrl(article.url)}}" target="_blank">{{article.title}}</a>
                         </td>
                         <td class="action">
                             <button ng-click="deleteArticle(article.id)">Remove</button>
