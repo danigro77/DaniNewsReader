@@ -56,3 +56,15 @@ gem 'spring'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+  gem 'shoulda', '~> 3.5.0'
+  gem 'factory_girl_rails', '4.2.1'
+  gem 'faker', '~> 1.5.0'
+end
+
+group :test do
+  gem 'database_cleaner', '~> 1.5', '>= 1.5.1'
+  gem 'simplecov', :require => false
+  gem "fakeweb", "~> 1.3"
+end

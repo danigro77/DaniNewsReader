@@ -2,7 +2,17 @@ class Newspaper < ActiveRecord::Base
   has_many :articles
 
   KNOWN_LINK_TYPES = %w(full partial).freeze
-  KNOWN_CHARACTERISITCS = %w(num_front num_end).freeze
+  KNOWN_CHARACTERISITCS = %w(num_front num_end default).freeze
+
+  SCRAPE_HELPER = {
+      full: {
+          default: /^https?:\/\/.+/
+      },
+      partial: {
+          num_front: /^\/\d+\/.+/,
+          num_end: /^\/.+\/.*\d+$/
+      }
+  }
 
   before_save :check_url
 
@@ -42,22 +52,8 @@ class Newspaper < ActiveRecord::Base
         .select { |link| link.text.present? && link.href.present? }
   end
 
-  def get_regex
-    case link_characteristic
-      when "num_front" then /^\/\d+\/.+/
-      when "num_end" then /^\/.+\/.*\d+$/
-    end
-  end
-
   def get_links(page)
-    case link_type
-      when "partial"
-        page.links_with(href: get_regex)
-      when"full"
-        page.links_with(href: /^https?:\/\/.+/)
-      else
-        []
-    end
+    page.links_with(href: SCRAPE_HELPER[link_type.to_sym][link_characteristic.to_sym])
   end
 
   def valid_link_type
@@ -74,7 +70,10 @@ class Newspaper < ActiveRecord::Base
 
   def check_url
     if url.match(/\/$/)
-      url = url[0..-2]
+      self.url = url[0..-2]
+      unless self.save
+        errors.add(:url, "could not be cleaned.")
+      end
     end
   end
 end

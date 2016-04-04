@@ -13,7 +13,7 @@ class Api::NewspapersController < ApplicationController
   def save_current_newspaper
     current_user.current_newspaper_id = params[:newspaper_id]
     if current_user.save
-      respond_with current_user.current_newspaper
+      render nothing: true, status: 201
     end
   end
 
