@@ -18,8 +18,6 @@ angular.module('app.newsReader').controller("ReaderController", ['$scope', 'News
     NewspaperService.getNewspapers().then (response) ->
       if response.status == 200 || response.status == 204
         scope.allNewspapers = response.data
-        if scope.selectedNewspaper.id != 0
-          getHeadlines()
 
   getHeadlines = ->
     ArticleService.getHeadlines(scope.selectedNewspaper.id).then (response) ->
