@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Test Examples</title>
+</head>
+<body>
+    <nav>
+        <p data-value="0">Those should be idnored</p>
+        <a href="/news">News</a>
+        <a href="/jobs">Jobs</a>
+        <a href="/app/assets/stylesheets">Home</a>
+    </nav>
+    <section>
+        <p data-value="2">Partial Urls with numbers first</p>
+        <a href="/123/543/23/sjdnkjnsk">valid</a>
+        <a href="/123/sjdnkj-nsk/kaskajn">valid</a>
+    </section>
+    <section>
+        <p data-value="3">Partial Urls with numbers at the end</p>
+        <a href="/sjdnkjnsk/3928928">valid</a>
+        <a href="/sjdnkj-nsk/rsfw/sdjcjd-389274">valid</a>
+        <a href="/sjdnkj-nsk/kaskajn/sdjcjd-389274">valid</a>
+    </section>
+    <section>
+        <p data-value="4">Full urls</p>
+        <a href="http://bla.com">valid</a>
+        <a href="http://bla.com/sjhdjks">valid</a>
+        <a href="https://bla.com/sjhdjks">valid</a>
+        <a href="https://bla.com/828-sjhdjks-8328973">valid</a>
+    </section>
+    <section>
+        <p>For further testing</p>
+        <!--This text should be used instead of just valid when same href-->
+        <a href="https://bla.com/828-sjhdjks-8328973">valid: longer test, same url</a>
+        <!--This should not be an output, since there is no text-->
+        <a href="http://bla.uk/no-text-invalid"></a>
+    </section>
+</body>
+</html>

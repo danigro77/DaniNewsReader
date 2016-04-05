@@ -20,3 +20,5 @@
 /app/assets/javascripts/angular-client/api/node_modules
 .sass-cache
 .tmp
+
+coverage/
